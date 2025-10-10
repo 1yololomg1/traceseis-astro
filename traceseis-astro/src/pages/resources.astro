@@ -1,4 +1,21 @@
 ---
-import RemotePage from "../components/RemotePage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<RemotePage sourcePath="/resources/" />
+<BaseLayout title="Resources — TraceSeis" description="Selected publications and resources that reflect our work and approach.">
+  <section class="section wrap" id="resources">
+    <h1>Resources</h1>
+    <div class="card">
+      <ul>
+        <li>
+          <a href="https://www.aapg.org/news-and-media/details/explorer/articleid/44498/relative-rock-properties" target="_blank" rel="noopener">AAPG Explorer — Relative Rock Properties (2018)</a>
+        </li>
+        <li>
+          <a href="https://www.traceseis.com/software/seistool/" target="_blank" rel="noopener">SeisTool — Rock physics and property analysis</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/traceseis-inc" target="_blank" rel="noopener">TraceSeis on LinkedIn</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

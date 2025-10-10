@@ -18,9 +18,12 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
 
 // Compute canonical URL using site config when available; fall back to production domain
 const fallbackOrigin = 'https://www.traceseis.com';
+const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname === '/' 
+  ? Astro.url.pathname 
+  : `${Astro.url.pathname}`; // keep as-is; static pages end with .html in build
 const canonical = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).toString()
-  : new URL(Astro.url.pathname, fallbackOrigin).toString();
+  ? new URL(pathname, Astro.site).toString()
+  : new URL(pathname, fallbackOrigin).toString();
 
 // Track active nav item based on current path
 const currentPath = Astro.url.pathname;
@@ -105,6 +108,13 @@ const currentPath = Astro.url.pathname;
       "name": "TraceSeis",
       "url": "https://www.traceseis.com/",
       "logo": "https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+1-832-707-6505",
+        "email": "achaveste@traceseis.com",
+        "areaServed": "US"
+      }],
       "sameAs": [
         "https://www.linkedin.com/company/24986283/",
         "https://www.linkedin.com/company/traceseis-inc"
@@ -122,6 +132,7 @@ const currentPath = Astro.url.pathname;
         </div>
         <nav class="links" aria-label="Primary">
           <a href="/" class:active={currentPath === '/'} aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
+          <a href="/approach" class:active={currentPath.startsWith('/approach')} aria-current={currentPath.startsWith('/approach') ? 'page' : undefined}>Approach</a>
           <a href="/services" class:active={currentPath.startsWith('/services')} aria-current={currentPath.startsWith('/services') ? 'page' : undefined}>Services</a>
           <a href="/software" class:active={currentPath.startsWith('/software')} aria-current={currentPath.startsWith('/software') ? 'page' : undefined}>Software</a>
           <a href="/partners" class:active={currentPath.startsWith('/partners')} aria-current={currentPath.startsWith('/partners') ? 'page' : undefined}>Partners</a>
