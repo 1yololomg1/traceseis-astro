@@ -1,5 +1,32 @@
 ---
+/*
+  BaseLayout.astro
+  Responsibilities:
+  - Provide consistent HTML skeleton, metadata, navigation, and footer for all pages
+  - Handle SEO tags (title, description, canonical, Open Graph, Twitter)
+  - Improve accessibility (skip link, focus styles, aria-current for active nav)
+
+  Props:
+  - title: string — page title used in <title> and social tags
+  - description: string — page description used in meta and social tags
+
+  Data flow:
+  - The layout receives props from each page and renders them in head tags
+  - Canonical URL is derived from Astro.site when configured; otherwise falls back to traceseis.com
+*/
 const { title = 'TraceSeis', description = 'Geoscience solutions through Services, Consulting and Software' } = Astro.props;
+
+// Compute canonical URL using site config when available; fall back to production domain
+const fallbackOrigin = 'https://www.traceseis.com';
+const pathname = Astro.url.pathname.endsWith('/') || Astro.url.pathname === '/' 
+  ? Astro.url.pathname 
+  : `${Astro.url.pathname}`; // keep as-is; static pages end with .html in build
+const canonical = Astro.site
+  ? new URL(pathname, Astro.site).toString()
+  : new URL(pathname, fallbackOrigin).toString();
+
+// Track active nav item based on current path
+const currentPath = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="en">
@@ -8,7 +35,22 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0B1F2E" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TraceSeis" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=1200%2C688&ssl=1" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=1200%2C688&ssl=1" />
     <link rel="preconnect" href="https://i0.wp.com" crossorigin>
+    <link rel="icon" href="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/cropped-TRACESEIS-INC-02-192x192.png?fit=192%2C192&ssl=1" sizes="192x192" />
     <style>
       :root {
         --bg: #0B1F2E;
@@ -19,11 +61,13 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
         --link: #1FB6C9;
         --border: #1c3a50;
         --white: #ffffff;
+        --focus: #8ee1ec;
       }
       * { box-sizing: border-box; }
       body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif; color: var(--fg); background: linear-gradient(180deg, #071521 0%, #0B1F2E 100%); }
       a { color: var(--link); text-decoration: none; }
       a:hover { text-decoration: underline; }
+      a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
       .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
       header { position: sticky; top: 0; backdrop-filter: blur(6px); background: rgba(7,21,33,0.7); border-bottom: 1px solid var(--border); z-index: 10; }
       .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
@@ -31,6 +75,9 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
       .brand img { height: 28px; width: auto; }
       .brand span { font-weight: 600; letter-spacing: 0.2px; color: var(--fg); }
       .links { display: flex; gap: 18px; flex-wrap: wrap; }
+      .links a { position: relative; padding: 4px 2px; border-radius: 6px; }
+      .links a.active { color: var(--white); }
+      .links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--accent); border-radius: 2px; }
       .hero { padding: 72px 0 48px; border-bottom: 1px solid var(--border); }
       h1 { font-size: 40px; line-height: 1.1; margin: 0 0 12px; }
       .sub { color: var(--muted); font-size: 18px; max-width: 820px; }
@@ -51,6 +98,8 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
       @media (max-width: 600px) { .partners-list { grid-template-columns: 1fr; } }
       footer { padding: 28px 0; color: var(--muted); }
       .toplink { position: fixed; right: 16px; bottom: 16px; background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; }
+      .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+      .skip-link:focus { position: static; width: auto; height: auto; margin: 8px; padding: 8px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
     </style>
     <script type="application/ld+json">
     {
@@ -59,6 +108,13 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
       "name": "TraceSeis",
       "url": "https://www.traceseis.com/",
       "logo": "https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+1-832-707-6505",
+        "email": "achaveste@traceseis.com",
+        "areaServed": "US"
+      }],
       "sameAs": [
         "https://www.linkedin.com/company/24986283/",
         "https://www.linkedin.com/company/traceseis-inc"
@@ -67,28 +123,34 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
     </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
       <div class="wrap nav">
         <div class="brand">
-          <img alt="TraceSeis logo" src="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1" />
+          <img alt="TraceSeis logo" src="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1" loading="lazy" decoding="async" />
           <span>TraceSeis</span>
         </div>
         <nav class="links" aria-label="Primary">
-          <a href="/">Home</a>
-          <a href="/services">Services</a>
-          <a href="/software">Software</a>
-          <a href="/partners">Partners</a>
-          <a href="/resources">Resources</a>
-          <a href="/about">About</a>
-          <a class="btn" href="/contact">Contact</a>
+          <a href="/" class:active={currentPath === '/'} aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
+          <a href="/approach" class:active={currentPath.startsWith('/approach')} aria-current={currentPath.startsWith('/approach') ? 'page' : undefined}>Approach</a>
+          <a href="/services" class:active={currentPath.startsWith('/services')} aria-current={currentPath.startsWith('/services') ? 'page' : undefined}>Services</a>
+          <a href="/software" class:active={currentPath.startsWith('/software')} aria-current={currentPath.startsWith('/software') ? 'page' : undefined}>Software</a>
+          <a href="/partners" class:active={currentPath.startsWith('/partners')} aria-current={currentPath.startsWith('/partners') ? 'page' : undefined}>Partners</a>
+          <a href="/resources" class:active={currentPath.startsWith('/resources')} aria-current={currentPath.startsWith('/resources') ? 'page' : undefined}>Resources</a>
+          <a href="/about" class:active={currentPath.startsWith('/about')} aria-current={currentPath.startsWith('/about') ? 'page' : undefined}>About</a>
+          <a class="btn" href="/contact" class:active={currentPath.startsWith('/contact')} aria-current={currentPath.startsWith('/contact') ? 'page' : undefined}>Contact</a>
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <footer class="wrap">
-      <p class="muted">© TraceSeis. Preview site for review only.</p>
+      {(() => {
+        const year = new Date().getFullYear();
+        return <p class="muted">© {year} TraceSeis. Preview site for review only.</p>;
+      })()}
     </footer>
+    <a class="toplink" href="#">Back to top</a>
   </body>
 </html>
