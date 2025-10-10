@@ -1,0 +1,26 @@
+---
+/**
+ * RemotePage.astro
+ * Fetches and renders sanitized HTML from traceseis.com using the scrape utility.
+ * Props:
+ * - sourcePath: string — path on traceseis.com (e.g., "/services/")
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { scrapeRemotePage } from "../lib/scrape";
+
+interface Props {
+  sourcePath: string;
+}
+
+const { sourcePath } = Astro.props as Props;
+const origin = 'https://www.traceseis.com';
+const sourceUrl = new URL(sourcePath, origin).toString();
+const { title, description, html } = await scrapeRemotePage(sourceUrl);
+---
+<BaseLayout {title} {description}>
+  <section class="section wrap">
+    <div class="card">
+      <div class="remote" set:html={html} />
+    </div>
+  </section>
+</BaseLayout>
