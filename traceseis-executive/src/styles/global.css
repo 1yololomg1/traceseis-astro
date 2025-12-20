@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Import Inter font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-accent-500/30 text-white;
+  }
+}
+
+@layer components {
+  /* Executive-style buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-accent-600 rounded-lg transition-all duration-200 hover:bg-accent-500 hover:shadow-lg hover:shadow-accent-500/25 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-transparent border border-white/20 rounded-lg transition-all duration-200 hover:bg-white/10 hover:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-navy-300 transition-colors duration-200 hover:text-white;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-navy-800/50 backdrop-blur-sm border border-navy-700/50 rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:bg-navy-800/70 hover:border-navy-600/50 hover:shadow-xl hover:shadow-navy-950/50;
+  }
+
+  /* Section styles */
+  .section {
+    @apply py-20 lg:py-28;
+  }
+
+  .section-dark {
+    @apply bg-navy-950;
+  }
+
+  .section-gradient {
+    @apply bg-gradient-to-b from-navy-900 to-navy-950;
+  }
+
+  /* Container */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Typography */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-primary-400;
+  }
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-display font-bold tracking-tight text-white;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-white;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-white;
+  }
+
+  .heading-sm {
+    @apply text-xl md:text-2xl font-semibold text-white;
+  }
+
+  .body-lg {
+    @apply text-lg text-navy-300 leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-base text-navy-400 leading-relaxed;
+  }
+
+  /* Metric/stat display */
+  .stat-value {
+    @apply text-4xl md:text-5xl font-bold text-white;
+  }
+
+  .stat-label {
+    @apply text-sm font-medium text-navy-400 uppercase tracking-wider mt-2;
+  }
+
+  /* Navigation link */
+  .nav-link {
+    @apply text-sm font-medium text-navy-300 transition-colors duration-200 hover:text-white relative;
+  }
+
+  .nav-link-active {
+    @apply text-white;
+  }
+
+  /* Feature list checkmark */
+  .feature-check {
+    @apply flex items-start gap-3 text-navy-300;
+  }
+
+  .feature-check::before {
+    content: '';
+    @apply w-5 h-5 mt-0.5 rounded-full bg-accent-500/20 flex-shrink-0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2306b6d4'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-navy-700 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animate on scroll preparation */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Glow effects */
+  .glow {
+    @apply relative;
+  }
+
+  .glow::after {
+    content: '';
+    @apply absolute inset-0 -z-10 blur-3xl opacity-20 bg-accent-500 rounded-full;
+  }
+}
