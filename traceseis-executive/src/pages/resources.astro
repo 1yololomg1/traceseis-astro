@@ -1,0 +1,232 @@
+---
+/**
+ * Resources Page - resources.astro
+ * 
+ * Publications, articles, and educational resources from TraceSeis.
+ * Demonstrates thought leadership and scientific credibility.
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Publications data
+const publications = [
+  {
+    title: 'Relative Rock Properties',
+    publication: 'AAPG Explorer',
+    year: 2018,
+    url: 'https://www.aapg.org/news-and-media/details/explorer/articleid/44498/relative-rock-properties',
+    description: 'Discusses the application of relative rock properties in seismic interpretation and their role in reducing exploration uncertainty.',
+    type: 'Article'
+  }
+];
+
+// Reference texts that underpin TraceSeis methodology
+const references = [
+  {
+    authors: 'Mavko, G., Mukerji, T., & Dvorkin, J.',
+    title: 'The Rock Physics Handbook',
+    publisher: 'Cambridge University Press',
+    year: 2009,
+    description: 'Comprehensive reference for rock physics equations and models used throughout our workflows.'
+  },
+  {
+    authors: 'Avseth, P., Mukerji, T., & Mavko, G.',
+    title: 'Quantitative Seismic Interpretation',
+    publisher: 'Cambridge University Press',
+    year: 2005,
+    description: 'Foundational text on applying rock physics to seismic interpretation - the basis for modern QI workflows.'
+  },
+  {
+    authors: 'Aki, K. & Richards, P.G.',
+    title: 'Quantitative Seismology: Theory and Methods',
+    publisher: 'W.H. Freeman',
+    year: 1980,
+    description: 'The theoretical foundation for seismic wave propagation and AVO analysis.'
+  },
+  {
+    authors: 'Gassmann, F.',
+    title: 'Elastic waves through a packing of spheres',
+    publisher: 'Geophysics, 16(4), 673-685',
+    year: 1951,
+    description: 'The original paper establishing fluid substitution theory - still foundational 70+ years later.'
+  }
+];
+---
+
+<BaseLayout 
+  title="Resources - Publications & References | TraceSeis"
+  description="Access TraceSeis publications, technical articles, and recommended references for quantitative seismic interpretation and rock physics."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-primary-950"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-[120px]"></div>
+    
+    <div class="container-wide relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="heading-xl mb-6">
+          Technical
+          <span class="text-gradient"> Resources</span>
+        </h1>
+        <p class="text-xl text-navy-300 leading-relaxed">
+          Publications, articles, and references that inform our approach to quantitative reservoir characterization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section class="section section-gradient" id="publications">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="heading-lg mb-8">Publications</h2>
+        
+        <div class="space-y-6">
+          {publications.map((pub) => (
+            <a 
+              href={pub.url} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="card card-hover p-6 block group"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-2 py-1 text-xs font-medium bg-accent-500/20 text-accent-400 rounded">{pub.type}</span>
+                    <span class="text-navy-500 text-sm">{pub.year}</span>
+                  </div>
+                  <h3 class="heading-sm mb-2 group-hover:text-accent-400 transition-colors">{pub.title}</h3>
+                  <p class="text-accent-400 text-sm mb-3">{pub.publication}</p>
+                  <p class="text-navy-400 text-sm">{pub.description}</p>
+                </div>
+                <svg class="w-5 h-5 text-navy-500 group-hover:text-accent-400 transition-colors flex-shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+        
+        <div class="mt-8 p-6 rounded-xl bg-navy-800/30 border border-navy-700/50">
+          <p class="text-navy-400 text-sm">
+            Additional publications and conference presentations available upon request. 
+            <a href="/contact" class="text-accent-400 hover:text-accent-300 transition-colors">Contact us</a> for more information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scientific Foundation -->
+  <section class="section section-dark" id="references">
+    <div class="container-wide">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h2 class="heading-lg mb-4">Scientific Foundation</h2>
+          <p class="body-lg">
+            Our methodologies are built on established geoscience literature. These foundational texts inform the theoretical framework behind TraceSeis services.
+          </p>
+        </div>
+        
+        <div class="space-y-6">
+          {references.map((ref) => (
+            <div class="card p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-navy-800 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-navy-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-white mb-1">{ref.title}</h3>
+                  <p class="text-accent-400 text-sm mb-1">{ref.authors}</p>
+                  <p class="text-navy-500 text-xs mb-3">{ref.publisher}, {ref.year}</p>
+                  <p class="text-navy-400 text-sm">{ref.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational Content -->
+  <section class="section section-gradient">
+    <div class="container-wide">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="heading-lg mb-6">Key Concepts</h2>
+        <p class="body-lg">
+          Brief explanations of fundamental concepts that underpin quantitative interpretation.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">Rock Physics</h3>
+          <p class="text-navy-400 text-sm">
+            The study of relationships between rock composition, pore structure, fluid content, and elastic properties. Rock physics provides the theoretical link between what we measure (seismic) and what we want to know (reservoir properties).
+          </p>
+        </div>
+        
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">Seismic Inversion</h3>
+          <p class="text-navy-400 text-sm">
+            The process of transforming seismic reflection data into quantitative estimates of subsurface properties (impedance, velocity, density). Inversion "removes" the wavelet to reveal the earth's reflectivity and properties.
+          </p>
+        </div>
+        
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">AVO Analysis</h3>
+          <p class="text-navy-400 text-sm">
+            Amplitude Variation with Offset - the study of how seismic amplitude changes with recording angle. AVO provides additional information about rock and fluid properties beyond what post-stack data can reveal.
+          </p>
+        </div>
+        
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">Gassmann Fluid Substitution</h3>
+          <p class="text-navy-400 text-sm">
+            A theoretical framework for predicting how rock elastic properties change when pore fluid changes. Essential for understanding direct hydrocarbon indicators and time-lapse seismic response.
+          </p>
+        </div>
+        
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">Uncertainty Quantification</h3>
+          <p class="text-navy-400 text-sm">
+            The systematic characterization of uncertainty in predictions. In reservoir characterization, this means providing not just a "best estimate" but also confidence intervals that reflect data quality and model limitations.
+          </p>
+        </div>
+        
+        <div class="card p-6">
+          <h3 class="font-semibold text-white mb-3">Lithofacies Classification</h3>
+          <p class="text-navy-400 text-sm">
+            The process of assigning rock type (lithofacies) to seismic data based on elastic property patterns. Statistical methods trained on well data enable prediction of lithology away from well control.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section section-dark">
+    <div class="container-wide">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="heading-lg mb-6">Want to Learn More?</h2>
+        <p class="body-lg mb-10">
+          Contact us to discuss how these concepts apply to your specific challenges, or to request additional technical resources.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="btn-primary text-base px-8 py-4">
+            Get in Touch
+            <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+          <a href="/services" class="btn-secondary text-base px-8 py-4">
+            View Our Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

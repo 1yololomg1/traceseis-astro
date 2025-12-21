@@ -1,0 +1,413 @@
+---
+/**
+ * CONFIRM Page - confirm.astro
+ * 
+ * Dedicated page for TraceSeis's proprietary CONFIRM methodology:
+ * CONfidence-driven Net Formation Inversion for Reservoir Mapping
+ * 
+ * Presents the integrated approach combining rock physics, inversion,
+ * and uncertainty quantification in a way that appeals to technical
+ * executives who need to trust the science behind the results.
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="CONFIRM - Confidence-Driven Reservoir Characterization | TraceSeis"
+  description="CONFIRM is TraceSeis's proprietary methodology for quantitative reservoir characterization with rigorous uncertainty quantification. Make better drilling decisions with data you can trust."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-primary-950/50 to-navy-950"></div>
+    <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-accent-500/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-primary-500/10 rounded-full blur-[100px]"></div>
+    
+    <div class="container-wide relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/30 text-sm text-accent-400 mb-8">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          Proprietary Methodology
+        </div>
+        
+        <!-- Logo/Title -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+          <span class="text-gradient">CONFIRM</span>
+        </h1>
+        
+        <!-- Acronym Expansion -->
+        <p class="text-xl md:text-2xl text-navy-300 mb-4">
+          <span class="text-white font-semibold">CO</span>nfidence-driven
+          <span class="text-white font-semibold">N</span>et reservoir
+          <span class="text-white font-semibold">F</span>ormation
+          <span class="text-white font-semibold">I</span>nversion for
+          <span class="text-white font-semibold">R</span>eservoir
+          <span class="text-white font-semibold">M</span>apping
+        </p>
+        
+        <!-- Tagline -->
+        <p class="text-lg text-navy-400 max-w-2xl mx-auto mb-10">
+          An integrated methodology that delivers reservoir property estimates with quantified confidence intervals, enabling better decisions under uncertainty.
+        </p>
+        
+        <!-- CTA -->
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="btn-primary text-base px-8 py-4">
+            Request CONFIRM Analysis
+            <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+          <a href="#methodology" class="btn-secondary text-base px-8 py-4">
+            Explore the Science
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem Section -->
+  <section class="section section-dark">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="heading-lg mb-6">The Challenge of Reservoir Uncertainty</h2>
+          <p class="body-lg mb-6">
+            Traditional seismic interpretation delivers maps and cross-sections, but often fails to answer the critical question: <em class="text-white">how confident should we be in these results?</em>
+          </p>
+          <p class="body-md mb-6">
+            Drilling decisions involve significant capital allocation. Without rigorous uncertainty quantification, organizations either over-invest in low-confidence opportunities or under-value high-confidence prospects.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-800/50 border border-navy-700/50">
+              <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Single-Answer Interpretations</h4>
+                <p class="text-navy-400 text-sm">Deterministic results hide the range of possibilities consistent with the data.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-800/50 border border-navy-700/50">
+              <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Disconnected Workflows</h4>
+                <p class="text-navy-400 text-sm">Processing, inversion, and interpretation often treated as separate steps without integrated uncertainty propagation.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-800/50 border border-navy-700/50">
+              <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Qualitative Confidence</h4>
+                <p class="text-navy-400 text-sm">"High," "medium," "low" confidence labels without quantitative basis or reproducibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card p-8 border-accent-500/30">
+          <h3 class="heading-sm mb-6 text-center">The CONFIRM Difference</h3>
+          <div class="space-y-6">
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-accent-500/20 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <p class="text-white font-medium mb-2">Quantified Confidence Intervals</p>
+              <p class="text-navy-400 text-sm">Every property estimate includes statistically rigorous uncertainty bounds.</p>
+            </div>
+            <div class="divider"></div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-accent-500/20 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <p class="text-white font-medium mb-2">Integrated Workflow</p>
+              <p class="text-navy-400 text-sm">Uncertainty tracked from seismic data through to final reservoir properties.</p>
+            </div>
+            <div class="divider"></div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full bg-accent-500/20 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                </svg>
+              </div>
+              <p class="text-white font-medium mb-2">Auditable Results</p>
+              <p class="text-navy-400 text-sm">Transparent methodology that can be reviewed and validated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology Section -->
+  <section class="section section-gradient" id="methodology">
+    <div class="container-wide">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="heading-lg mb-6">The CONFIRM Methodology</h2>
+        <p class="body-lg">
+          CONFIRM integrates five interconnected components, each grounded in established geoscience principles, with uncertainty propagated systematically through the entire workflow.
+        </p>
+      </div>
+      
+      <!-- Methodology Steps -->
+      <div class="relative">
+        <!-- Connection line (desktop) -->
+        <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent-500/30 to-transparent -translate-y-1/2"></div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Step 1 -->
+          <div class="card p-6 relative">
+            <div class="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10">1</div>
+            <h3 class="font-semibold text-white mb-2">Data Integration</h3>
+            <p class="text-navy-400 text-sm mb-4">
+              Systematic compilation of well logs, seismic data, and geological knowledge with quality assessment.
+            </p>
+            <div class="text-xs text-navy-500">
+              <strong class="text-navy-400">Scientific Basis:</strong> Data quality metrics, measurement uncertainty characterization
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="card p-6 relative">
+            <div class="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10">2</div>
+            <h3 class="font-semibold text-white mb-2">Rock Physics Calibration</h3>
+            <p class="text-navy-400 text-sm mb-4">
+              Establish quantitative relationships between reservoir properties and elastic response using well data.
+            </p>
+            <div class="text-xs text-navy-500">
+              <strong class="text-navy-400">Scientific Basis:</strong> Gassmann theory, contact mechanics, empirical calibration with scatter quantification
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="card p-6 relative">
+            <div class="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10">3</div>
+            <h3 class="font-semibold text-white mb-2">Seismic Inversion</h3>
+            <p class="text-navy-400 text-sm mb-4">
+              Transform seismic amplitudes to elastic properties using deterministic and/or stochastic methods.
+            </p>
+            <div class="text-xs text-navy-500">
+              <strong class="text-navy-400">Scientific Basis:</strong> Convolutional model, Zoeppritz equations, Bayesian inference
+            </div>
+          </div>
+          
+          <!-- Step 4 -->
+          <div class="card p-6 relative">
+            <div class="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10">4</div>
+            <h3 class="font-semibold text-white mb-2">Property Estimation</h3>
+            <p class="text-navy-400 text-sm mb-4">
+              Convert elastic properties to reservoir properties using calibrated rock physics transforms.
+            </p>
+            <div class="text-xs text-navy-500">
+              <strong class="text-navy-400">Scientific Basis:</strong> Calibrated transforms with regression uncertainty, Monte Carlo propagation
+            </div>
+          </div>
+          
+          <!-- Step 5 -->
+          <div class="card p-6 relative">
+            <div class="w-12 h-12 rounded-full bg-accent-500 flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10">5</div>
+            <h3 class="font-semibold text-white mb-2">Confidence Mapping</h3>
+            <p class="text-navy-400 text-sm mb-4">
+              Generate property maps with associated confidence intervals and probability of meeting thresholds.
+            </p>
+            <div class="text-xs text-navy-500">
+              <strong class="text-navy-400">Scientific Basis:</strong> Error propagation theory, probabilistic mapping, decision analysis
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scientific Foundation -->
+  <section class="section section-dark">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <h2 class="heading-lg mb-6">Scientific Foundation</h2>
+          <p class="body-lg mb-8">
+            CONFIRM is not a black box. Every step is based on established physics and mathematics that can be examined, validated, and reproduced.
+          </p>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-semibold text-white mb-2">Theoretical Framework</h3>
+              <p class="text-navy-400 text-sm">
+                Built on Gassmann fluid substitution theory (1951), Biot poroelasticity (1956), and Hertz-Mindlin contact mechanics - equations that have been validated through decades of laboratory and field observations.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-white mb-2">Statistical Rigor</h3>
+              <p class="text-navy-400 text-sm">
+                Uncertainty quantification follows established statistical methods: Bayesian inference for combining prior knowledge with observations, Monte Carlo simulation for error propagation, and cross-validation for model testing.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-white mb-2">Calibration Requirements</h3>
+              <p class="text-navy-400 text-sm">
+                We explicitly require well control for calibration. CONFIRM does not claim to predict properties without ground truth - it provides a rigorous framework for extending well observations to undrilled areas with quantified confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="heading-sm mb-6">Key Publications & References</h3>
+          <div class="space-y-4">
+            <div class="card p-4">
+              <h4 class="font-medium text-white text-sm mb-1">Gassmann, F. (1951)</h4>
+              <p class="text-navy-400 text-xs mb-2">Elastic waves through a packing of spheres. Geophysics, 16(4), 673-685.</p>
+              <p class="text-navy-500 text-xs">Foundation for fluid substitution modeling</p>
+            </div>
+            <div class="card p-4">
+              <h4 class="font-medium text-white text-sm mb-1">Aki, K. & Richards, P.G. (1980)</h4>
+              <p class="text-navy-400 text-xs mb-2">Quantitative Seismology: Theory and Methods. W.H. Freeman.</p>
+              <p class="text-navy-500 text-xs">Theoretical basis for AVO analysis</p>
+            </div>
+            <div class="card p-4">
+              <h4 class="font-medium text-white text-sm mb-1">Mavko, G., Mukerji, T., & Dvorkin, J. (2009)</h4>
+              <p class="text-navy-400 text-xs mb-2">The Rock Physics Handbook. Cambridge University Press.</p>
+              <p class="text-navy-500 text-xs">Comprehensive rock physics reference</p>
+            </div>
+            <div class="card p-4">
+              <h4 class="font-medium text-white text-sm mb-1">Avseth, P., Mukerji, T., & Mavko, G. (2005)</h4>
+              <p class="text-navy-400 text-xs mb-2">Quantitative Seismic Interpretation. Cambridge University Press.</p>
+              <p class="text-navy-500 text-xs">Integrated QI workflow methodology</p>
+            </div>
+          </div>
+          <a href="/resources" class="inline-flex items-center mt-6 text-accent-400 hover:text-accent-300 text-sm font-medium transition-colors">
+            View TraceSeis publications
+            <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="section section-gradient">
+    <div class="container-wide">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="heading-lg mb-6">CONFIRM Deliverables</h2>
+        <p class="body-lg">
+          Decision-ready outputs designed for integration into exploration and development workflows.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Property Maps with Confidence</h3>
+          <p class="text-navy-400 text-sm">
+            Porosity, net pay, and lithology maps accompanied by standard deviation or percentile bounds at each location.
+          </p>
+        </div>
+        
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Probability of Success Maps</h3>
+          <p class="text-navy-400 text-sm">
+            Probability that properties exceed economic thresholds (e.g., P(porosity > 15%) at each map location.
+          </p>
+        </div>
+        
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Rock Physics Templates</h3>
+          <p class="text-navy-400 text-sm">
+            Calibrated crossplots showing expected elastic property ranges for different lithologies and fluids.
+          </p>
+        </div>
+        
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Sensitivity Analysis Report</h3>
+          <p class="text-navy-400 text-sm">
+            Documentation of which uncertainties contribute most to final property uncertainty, identifying where additional data would be most valuable.
+          </p>
+        </div>
+        
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Methodology Documentation</h3>
+          <p class="text-navy-400 text-sm">
+            Complete documentation of all assumptions, parameters, and algorithms used - enabling internal review and audit.
+          </p>
+        </div>
+        
+        <div class="card card-hover p-6">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500/20 to-primary-500/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white mb-2">Integration Support</h3>
+          <p class="text-navy-400 text-sm">
+            Results delivered in standard formats (SEGY, ASCII, Petrel-compatible) with support for integration into your reservoir modeling workflow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent-950 via-navy-950 to-primary-950"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-500/5 rounded-full blur-[100px]"></div>
+    
+    <div class="container-wide relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="heading-lg mb-6">Apply CONFIRM to Your Reservoir</h2>
+        <p class="body-lg mb-10">
+          Contact us to discuss how confidence-driven reservoir characterization can improve your exploration and development decisions.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="btn-primary text-base px-8 py-4">
+            Request a Consultation
+            <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+          <a href="/services" class="btn-secondary text-base px-8 py-4">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
