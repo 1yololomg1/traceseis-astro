@@ -9,6 +9,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- Hero -->
   <section class="hero">
     <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-bg-art" aria-hidden="true">
+      <img src="/images/landscape-geological.jpg" alt="" />
+    </div>
     <div class="container hero-content">
       <span class="hero-badge">Quantitative Reservoir Characterization</span>
       <h1>Geoscience Solutions Through Services, Consulting and Software</h1>
@@ -67,21 +70,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p>By leveraging relative rock properties, the approach computes reservoir properties directly from seismic data, reducing required user inputs and simplifying complex workflows.</p>
           <a href="/services" class="btn btn-secondary mt-16">Explore Services</a>
         </div>
-        <div class="highlight-visual" aria-hidden="true">
-          <svg class="trace-lines" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 40 C40 30, 80 55, 120 35 C160 15, 200 60, 240 40 C280 20, 320 50, 360 35 L400 42" stroke="#0e7c86" stroke-width="1.5" opacity="0.8"/>
-            <path d="M0 70 C40 60, 80 90, 120 65 C160 40, 200 85, 240 70 C280 55, 320 80, 360 65 L400 72" stroke="#0e7c86" stroke-width="1.5" opacity="0.6"/>
-            <path d="M0 100 C40 88, 80 115, 120 95 C160 75, 200 110, 240 100 C280 85, 320 108, 360 95 L400 102" stroke="#0e7c86" stroke-width="1.5" opacity="0.45"/>
-            <path d="M0 130 C40 118, 80 145, 120 125 C160 105, 200 140, 240 130 C280 115, 320 138, 360 125 L400 132" stroke="#0e7c86" stroke-width="1.5" opacity="0.3"/>
-            <path d="M0 160 C40 150, 80 175, 120 155 C160 135, 200 168, 240 158 C280 145, 320 165, 360 155 L400 162" stroke="#0e7c86" stroke-width="1.5" opacity="0.18"/>
-          </svg>
+        <div class="art-frame">
+          <img src="/images/vortex-grayscale.jpg" alt="Seismic data visualization" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Art Showcase -->
+  <section class="section">
+    <div class="container">
+      <div class="art-grid">
+        <div class="art-cell span-2">
+          <img src="/images/landscape-geological.jpg" alt="Geological landscape visualization" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/strata-ink.jpg" alt="Geological strata study" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/seismic-waveforms.jpg" alt="Seismic waveform patterns" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/terraces-blue.jpg" alt="Subsurface terrain visualization" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/terraces-circular.jpg" alt="Concentric geological formation" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/vortex-pastel.jpg" alt="Seismic wave propagation" loading="lazy" />
+        </div>
+        <div class="art-cell">
+          <img src="/images/textile-pattern.jpg" alt="Geological pattern study" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- Facts -->
-  <section class="section">
+  <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="stats-row">
         <div class="stat-item">

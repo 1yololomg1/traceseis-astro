@@ -16,18 +16,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="section">
     <div class="container">
-      <div class="grid-2">
-        <div class="card card-accent">
-          <h3>SeisTool</h3>
-          <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Rock Physics Software</p>
-          <p>SeisTool is TraceSeis's rock physics software platform, designed to support geoscientists in analyzing relationships between rock properties and seismic data. The tool helps reduce subsurface uncertainty by providing quantitative analysis capabilities.</p>
-          <a href="https://www.traceseis.com/software/seistool/" target="_blank" rel="noopener" class="card-link">View on traceseis.com</a>
+      <div class="highlight-row">
+        <div>
+          <div class="card card-accent" style="margin-bottom: 24px;">
+            <h3>SeisTool</h3>
+            <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Rock Physics Software</p>
+            <p>SeisTool is TraceSeis's rock physics software platform, designed to support geoscientists in analyzing relationships between rock properties and seismic data. The tool helps reduce subsurface uncertainty by providing quantitative analysis capabilities.</p>
+            <a href="https://www.traceseis.com/software/seistool/" target="_blank" rel="noopener" class="card-link">View on traceseis.com</a>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--color-border);">
+            <h3>SeisInv</h3>
+            <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Seismic Inversion Software &middot; In Development</p>
+            <p>SeisInv is a seismic inversion to reservoir properties software currently under development. It will extend TraceSeis's proprietary methodology for reservoir property estimation into a dedicated software platform.</p>
+            <a href="https://www.traceseis.com/software/" target="_blank" rel="noopener" class="card-link">Software overview on traceseis.com</a>
+          </div>
         </div>
-        <div class="card" style="border-top: 3px solid var(--color-border);">
-          <h3>SeisInv</h3>
-          <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Seismic Inversion Software &middot; In Development</p>
-          <p>SeisInv is a seismic inversion to reservoir properties software currently under development. It will extend TraceSeis's proprietary methodology for reservoir property estimation into a dedicated software platform.</p>
-          <a href="https://www.traceseis.com/software/" target="_blank" rel="noopener" class="card-link">Software overview on traceseis.com</a>
+        <div class="art-frame">
+          <img src="/images/vortex-pastel.jpg" alt="Data visualization" loading="lazy" />
         </div>
       </div>
     </div>

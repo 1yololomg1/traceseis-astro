@@ -664,7 +664,92 @@ function isActive(href: string): boolean {
       }
 
       /* ===========================================
-         16. Utilities
+         16. Art / Image Display
+         =========================================== */
+      .hero-bg-art {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .hero-bg-art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.18;
+        mix-blend-mode: lighten;
+      }
+      .art-frame {
+        border-radius: var(--radius);
+        overflow: hidden;
+        position: relative;
+        background: var(--color-dark);
+        min-height: 280px;
+      }
+      .art-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .art-frame-light {
+        border-radius: var(--radius);
+        overflow: hidden;
+        position: relative;
+        background: var(--color-surface-alt);
+        border: 1px solid var(--color-border);
+      }
+      .art-frame-light img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .art-banner {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        border-radius: var(--radius);
+        background: var(--color-dark);
+      }
+      .art-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .art-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 220px;
+        gap: 12px;
+      }
+      .art-grid .art-cell {
+        border-radius: var(--radius);
+        overflow: hidden;
+        position: relative;
+        background: var(--color-dark);
+      }
+      .art-grid .art-cell img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .art-grid .art-cell:hover img {
+        transform: scale(1.03);
+      }
+      .art-grid .art-cell.span-2 {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .art-grid .art-cell.tall {
+        grid-row: span 2;
+      }
+
+      /* ===========================================
+         17. Utilities
          =========================================== */
       .sr-only {
         position: absolute;
@@ -691,6 +776,8 @@ function isActive(href: string): boolean {
         .grid-4 { grid-template-columns: repeat(2, 1fr); }
         .highlight-row { grid-template-columns: 1fr; gap: 32px; }
         .footer-grid { grid-template-columns: 1fr 1fr; }
+        .art-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+        .art-grid .art-cell.span-2 { grid-column: span 2; grid-row: span 1; }
       }
 
       @media (max-width: 768px) {
@@ -705,6 +792,9 @@ function isActive(href: string): boolean {
         .grid-4 { grid-template-columns: 1fr; }
         .stats-row { grid-template-columns: 1fr; gap: 24px; }
         .card { padding: 24px; }
+        .art-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+        .art-grid .art-cell.span-2 { grid-column: span 1; grid-row: span 1; }
+        .art-grid .art-cell.tall { grid-row: span 1; }
 
         .nav-toggle {
           display: flex;
