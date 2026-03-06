@@ -1,21 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Contact — TraceSeis" description="Contact TraceSeis.">
-  <section class="section wrap" id="contact">
-    <h1>Contact</h1>
-    <div class="contact-list">
-      <div class="card">
-        <h3>Founder and CEO — Alvaro Chaveste</h3>
-        <p><a href="tel:+18327076505">+1 (832) 707 6505</a> · <a href="mailto:achaveste@traceseis.com">achaveste@traceseis.com</a></p>
+<BaseLayout
+  title="Contact — TraceSeis"
+  description="Contact TraceSeis for geoscience services, consulting, and software inquiries."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">Contact</p>
+      <h1>Get in Touch</h1>
+      <p class="lead">Reach out to discuss your reservoir characterization requirements.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="contact-card">
+          <h3>Alvaro Chaveste</h3>
+          <p class="contact-role">Founder &amp; CEO</p>
+          <div class="contact-detail">
+            <a href="mailto:achaveste@traceseis.com">achaveste@traceseis.com</a>
+            <a href="tel:+18327076505">+1 (832) 707-6505</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>Alvaro Chaveste II</h3>
+          <p class="contact-role">Business Development Lead</p>
+          <div class="contact-detail">
+            <a href="mailto:alvarochf@traceseis.com">alvarochf@traceseis.com</a>
+            <a href="tel:+13462985918">+1 (346) 298-5918</a>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Business Development Lead — Alvaro Chaveste II</h3>
-        <p><a href="tel:+13462985918">+1 (346) 298-5918</a> · <a href="mailto:alvarochf@traceseis.com">alvarochf@traceseis.com</a></p>
-      </div>
-      <div class="card">
-        <p><a href="https://www.traceseis.com/contact-us-2/" target="_blank" rel="noopener">Contact page on traceseis.com</a></p>
+
+      <div class="mt-48">
+        <div class="card" style="max-width: 480px;">
+          <h3>Location</h3>
+          <p>Houston, Texas</p>
+          <div class="mt-16">
+            <a href="https://www.linkedin.com/company/traceseis-inc" target="_blank" rel="noopener" class="card-link">TraceSeis on LinkedIn</a>
+          </div>
+          <div class="mt-16">
+            <a href="https://www.traceseis.com/contact-us-2/" target="_blank" rel="noopener" class="card-link">Contact form on traceseis.com</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
 </BaseLayout>

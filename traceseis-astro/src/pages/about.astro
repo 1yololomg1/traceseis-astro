@@ -1,12 +1,75 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="About — TraceSeis" description="Founded in 2003 in Houston, TraceSeis provides geoscience solutions through Services, Consulting and Software.">
-  <section class="section wrap" id="about">
-    <h1>About</h1>
-    <div class="card">
-      <p>TraceSeis is a privately owned company founded in 2003 in Houston. The company provides specialized geoscience solutions through services, consulting, and software, with expertise in characterizing relationships between rock properties, reservoir attributes, and seismic data.</p>
-      <p><a href="https://www.traceseis.com/about-traceseis/" target="_blank" rel="noopener">About TraceSeis on traceseis.com</a></p>
+<BaseLayout
+  title="About — TraceSeis"
+  description="Founded in 2003 in Houston, TraceSeis is a privately owned company specializing in quantitative reservoir characterization."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">About</p>
+      <h1>About TraceSeis</h1>
+      <p class="lead">A Houston-based geoscience company specializing in quantitative reservoir characterization since 2003.</p>
     </div>
   </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="highlight-row">
+        <div class="highlight-text">
+          <h2>Our Company</h2>
+          <p>TraceSeis is a privately owned company founded in 2003 in Houston, Texas. The company provides specialized geoscience solutions through services, consulting, and software, with expertise in characterizing relationships between rock properties, reservoir attributes, and seismic data.</p>
+          <p>TraceSeis helps clients in the oil and gas industry reduce risk when quantifying reservoir properties using well-calibrated seismic analysis. The company delivers three integrated offerings: specialized geophysical and geological analysis services, expert consulting, and proprietary software solutions.</p>
+          <a href="https://www.traceseis.com/about-traceseis/" target="_blank" rel="noopener" class="card-link mt-16">More on traceseis.com</a>
+        </div>
+        <div>
+          <div class="stats-row" style="border: none; padding: 0; grid-template-columns: 1fr;">
+            <div class="stat-item" style="text-align: left;">
+              <div class="stat-value">2003</div>
+              <div class="stat-label">Founded in Houston, Texas</div>
+            </div>
+            <div class="stat-item" style="text-align: left; margin-top: 24px;">
+              <div class="stat-value" style="font-size: 24px; color: var(--color-text);">Oil &amp; Gas</div>
+              <div class="stat-label">Industry Focus</div>
+            </div>
+            <div class="stat-item" style="text-align: left; margin-top: 24px;">
+              <div class="stat-value" style="font-size: 24px; color: var(--color-text);">Privately Owned</div>
+              <div class="stat-label">Company Structure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Leadership</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Alvaro Chaveste</h3>
+          <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Founder &amp; CEO</p>
+          <p>Founder of TraceSeis with published research in rock physics, reservoir characterization, seismic inversion, and AVAZ analysis.</p>
+          <a href="https://scholar.google.com/citations?user=rjBRzCEAAAAJ&hl=en" target="_blank" rel="noopener" class="card-link">Google Scholar profile</a>
+        </div>
+        <div class="card">
+          <h3>Alvaro Chaveste II</h3>
+          <p style="color: var(--color-text-tertiary); font-size: 14px; margin-bottom: 12px;">Business Development Lead</p>
+          <p>Leads business development efforts at TraceSeis, connecting clients with the company's geoscience services, consulting, and software solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <h2>Work with TraceSeis</h2>
+      <p>Contact our team to discuss how we can support your geoscience objectives.</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
 </BaseLayout>

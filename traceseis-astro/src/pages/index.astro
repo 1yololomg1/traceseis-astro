@@ -1,23 +1,112 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="TraceSeis — Geoscience solutions through Services, Consulting and Software" description="Founded in 2003 in Houston, TraceSeis specializes in quantitative reservoir characterization.">
-  <section class="hero wrap" id="home">
-    <h1>Geoscience solutions through Services, Consulting and Software</h1>
-    <p class="sub">Founded in 2003 in Houston, TraceSeis specializes in quantitative reservoir characterization.</p>
-    <div class="cta">
-      <a class="btn primary" href="/services">View Services</a>
-      <a class="btn" href="/contact">Contact Us</a>
+<BaseLayout
+  title="TraceSeis — Geoscience Solutions Through Services, Consulting and Software"
+  description="Founded in 2003 in Houston, TraceSeis specializes in quantitative reservoir characterization for the oil and gas industry."
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <span class="hero-badge">Quantitative Reservoir Characterization</span>
+      <h1>Geoscience Solutions Through Services, Consulting and Software</h1>
+      <p class="hero-desc">
+        Since 2003, TraceSeis has delivered specialized expertise in characterizing
+        relationships between rock properties, reservoir attributes, and seismic data.
+      </p>
+      <div class="hero-actions">
+        <a href="/services" class="btn btn-primary">Our Services</a>
+        <a href="/contact" class="btn btn-outline-light">Get in Touch</a>
+      </div>
     </div>
   </section>
 
-  <section class="section wrap">
-    <h2>At a glance</h2>
-    <div class="grid">
-      <article class="card"><h3>Services</h3><p><a href="/services">Explore services</a></p></article>
-      <article class="card"><h3>Software</h3><p><a href="/software">View software</a></p></article>
-      <article class="card"><h3>Partners</h3><p><a href="/partners">See partners</a></p></article>
-      <article class="card"><h3>Resources</h3><p><a href="/resources">Read publications</a></p></article>
+  <!-- Services Overview -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">What We Do</p>
+        <h2>Integrated Geoscience Services</h2>
+        <p class="lead">Specialized services designed to reduce risk when quantifying reservoir properties using well-calibrated seismic analysis.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card card-accent">
+          <h3>Seismic Data Processing</h3>
+          <p>Advanced techniques to enhance data quality and resolution with customized workflows tailored to specific geological challenges.</p>
+          <a href="/services" class="card-link">Learn more</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Feasibility Studies</h3>
+          <p>Thorough assessments evaluating data quality, geological complexity, and technical viability to guide decision-making.</p>
+          <a href="/services" class="card-link">Learn more</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Lithofacies Prediction</h3>
+          <p>Accurate predictions using integrated seismic and well-log data combined with rock physics modeling.</p>
+          <a href="/services" class="card-link">Learn more</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Inversion to Reservoir Properties</h3>
+          <p>Proprietary methodologies that transform seismic attributes into porosity, saturation, and other reservoir parameters.</p>
+          <a href="/services" class="card-link">Learn more</a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Approach -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="highlight-row">
+        <div class="highlight-text">
+          <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">Our Approach</p>
+          <h2>Reducing Dependency on Low Frequency Models</h2>
+          <p>TraceSeis has developed a methodology for advanced reservoir property estimation that reduces reliance on traditional Low Frequency Models, providing a more streamlined workflow for reservoir characterization.</p>
+          <p>By leveraging relative rock properties, the approach computes reservoir properties directly from seismic data, reducing required user inputs and simplifying complex workflows.</p>
+          <a href="/services" class="btn btn-secondary mt-16">Explore Services</a>
+        </div>
+        <div class="highlight-visual" aria-hidden="true">
+          <svg class="trace-lines" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 40 C40 30, 80 55, 120 35 C160 15, 200 60, 240 40 C280 20, 320 50, 360 35 L400 42" stroke="#0e7c86" stroke-width="1.5" opacity="0.8"/>
+            <path d="M0 70 C40 60, 80 90, 120 65 C160 40, 200 85, 240 70 C280 55, 320 80, 360 65 L400 72" stroke="#0e7c86" stroke-width="1.5" opacity="0.6"/>
+            <path d="M0 100 C40 88, 80 115, 120 95 C160 75, 200 110, 240 100 C280 85, 320 108, 360 95 L400 102" stroke="#0e7c86" stroke-width="1.5" opacity="0.45"/>
+            <path d="M0 130 C40 118, 80 145, 120 125 C160 105, 200 140, 240 130 C280 115, 320 138, 360 125 L400 132" stroke="#0e7c86" stroke-width="1.5" opacity="0.3"/>
+            <path d="M0 160 C40 150, 80 175, 120 155 C160 135, 200 168, 240 158 C280 145, 320 165, 360 155 L400 162" stroke="#0e7c86" stroke-width="1.5" opacity="0.18"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facts -->
+  <section class="section">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-value">2003</div>
+          <div class="stat-label">Founded in Houston, Texas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Integrated offerings: Services, Consulting, Software</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">4</div>
+          <div class="stat-label">Industry partners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to discuss your project?</h2>
+      <p>Contact our team to learn how TraceSeis can support your reservoir characterization objectives.</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
 </BaseLayout>

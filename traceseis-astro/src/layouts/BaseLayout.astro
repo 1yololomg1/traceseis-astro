@@ -1,5 +1,30 @@
 ---
-const { title = 'TraceSeis', description = 'Geoscience solutions through Services, Consulting and Software' } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'TraceSeis — Geoscience Solutions',
+  description = 'TraceSeis specializes in quantitative reservoir characterization, providing geoscience solutions through services, consulting, and software since 2003.',
+} = Astro.props;
+
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/software', label: 'Software' },
+  { href: '/partners', label: 'Partners' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/about', label: 'About' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href;
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -8,87 +33,839 @@ const { title = 'TraceSeis', description = 'Geoscience solutions through Service
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://i0.wp.com" crossorigin>
-    <style>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      /* ===========================================
+         1. Custom Properties
+         =========================================== */
       :root {
-        --bg: #0B1F2E;
-        --fg: #e6eef3;
-        --muted: #9fb3c1;
-        --card: #102a3d;
-        --accent: #1FB6C9;
-        --link: #1FB6C9;
-        --border: #1c3a50;
-        --white: #ffffff;
+        --color-dark: #0f1c2e;
+        --color-dark-mid: #162a42;
+        --color-dark-light: #1e3450;
+
+        --color-bg: #faf9f6;
+        --color-surface: #ffffff;
+        --color-surface-alt: #f4f3ef;
+        --color-border: #e4e1db;
+        --color-border-light: #edeae5;
+
+        --color-text: #1c2331;
+        --color-text-secondary: #576171;
+        --color-text-tertiary: #7c8594;
+        --color-text-on-dark: #d8dce3;
+        --color-text-on-dark-bright: #eef0f4;
+
+        --color-accent: #0e7c86;
+        --color-accent-dark: #0a6069;
+        --color-accent-light: #eef6f7;
+
+        --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', Roboto, sans-serif;
+        --max-width: 1120px;
+        --header-height: 72px;
+        --radius: 8px;
+
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+        --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
       }
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif; color: var(--fg); background: linear-gradient(180deg, #071521 0%, #0B1F2E 100%); }
-      a { color: var(--link); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-      header { position: sticky; top: 0; backdrop-filter: blur(6px); background: rgba(7,21,33,0.7); border-bottom: 1px solid var(--border); z-index: 10; }
-      .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-      .brand { display: flex; align-items: center; gap: 12px; }
-      .brand img { height: 28px; width: auto; }
-      .brand span { font-weight: 600; letter-spacing: 0.2px; color: var(--fg); }
-      .links { display: flex; gap: 18px; flex-wrap: wrap; }
-      .hero { padding: 72px 0 48px; border-bottom: 1px solid var(--border); }
-      h1 { font-size: 40px; line-height: 1.1; margin: 0 0 12px; }
-      .sub { color: var(--muted); font-size: 18px; max-width: 820px; }
-      .cta { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
-      .btn { display: inline-block; padding: 12px 16px; border-radius: 8px; font-weight: 600; border: 1px solid var(--accent); }
-      .btn.primary { background: var(--accent); color: #06242c; }
-      .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
-      .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
-      .card { grid-column: span 6; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-      @media (max-width: 860px) { .card { grid-column: 1 / -1; } }
-      h2 { font-size: 28px; margin: 0 0 16px; }
-      h3 { margin: 0 0 6px; font-size: 18px; }
-      p { margin: 0 0 10px; color: var(--fg); }
-      ul { margin: 0 0 10px 18px; color: var(--fg); }
-      .muted { color: var(--muted); }
-      .partners-list, .contact-list { display: grid; gap: 12px; }
-      .partners-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      @media (max-width: 600px) { .partners-list { grid-template-columns: 1fr; } }
-      footer { padding: 28px 0; color: var(--muted); }
-      .toplink { position: fixed; right: 16px; bottom: 16px; background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; }
+
+      /* ===========================================
+         2. Reset & Base
+         =========================================== */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+      body {
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--color-text);
+        background: var(--color-bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      img { max-width: 100%; height: auto; display: block; }
+
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      a:hover { color: var(--color-accent-dark); }
+
+      /* ===========================================
+         3. Typography
+         =========================================== */
+      h1, h2, h3, h4 {
+        line-height: 1.2;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      h1 { font-size: 48px; letter-spacing: -0.02em; }
+      h2 { font-size: 32px; letter-spacing: -0.01em; }
+      h3 { font-size: 20px; font-weight: 600; }
+      h4 { font-size: 17px; font-weight: 600; }
+      p { margin-bottom: 12px; }
+      p:last-child { margin-bottom: 0; }
+
+      .lead {
+        font-size: 19px;
+        line-height: 1.65;
+        color: var(--color-text-secondary);
+      }
+      .label-sm {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      /* ===========================================
+         4. Layout
+         =========================================== */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .section {
+        padding: 80px 0;
+      }
+      .section-alt {
+        padding: 80px 0;
+        background: var(--color-surface-alt);
+      }
+      .section-heading {
+        margin-bottom: 40px;
+      }
+      .section-heading h2 {
+        margin-bottom: 12px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      /* ===========================================
+         5. Header & Navigation
+         =========================================== */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        height: var(--header-height);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--header-height);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--color-text);
+        flex-shrink: 0;
+      }
+      .logo:hover { color: var(--color-text); text-decoration: none; }
+      .logo-mark svg {
+        display: block;
+      }
+      .logo-text {
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 14px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        border-radius: 6px;
+        transition: color 0.15s ease, background 0.15s ease;
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        color: var(--color-text);
+        background: var(--color-surface-alt);
+        text-decoration: none;
+      }
+      .nav-link.active {
+        color: var(--color-accent);
+        background: var(--color-accent-light);
+      }
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 8px;
+        padding: 8px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--color-surface);
+        background: var(--color-accent);
+        border-radius: 6px;
+        transition: background 0.15s ease;
+        text-decoration: none;
+      }
+      .nav-cta:hover {
+        background: var(--color-accent-dark);
+        color: var(--color-surface);
+        text-decoration: none;
+      }
+      .nav-toggle {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .nav-toggle:hover {
+        background: var(--color-surface-alt);
+      }
+      .hamburger-line {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--color-text);
+        border-radius: 1px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .hamburger-line + .hamburger-line {
+        margin-top: 4px;
+      }
+      .nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      /* ===========================================
+         6. Hero (Home page)
+         =========================================== */
+      .hero {
+        position: relative;
+        background: var(--color-dark);
+        padding: 100px 0 88px;
+        overflow: hidden;
+      }
+      .hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 0%, transparent 100%);
+        -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 0%, transparent 100%);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+      }
+      .hero-badge {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: 20px;
+        padding: 6px 14px;
+        background: rgba(14,124,134,0.12);
+        border-radius: 4px;
+      }
+      .hero h1 {
+        color: var(--color-text-on-dark-bright);
+        font-size: 52px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+      .hero-desc {
+        font-size: 19px;
+        line-height: 1.65;
+        color: var(--color-text-on-dark);
+        max-width: 640px;
+        margin-bottom: 32px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      /* ===========================================
+         7. Page Header (Inner pages)
+         =========================================== */
+      .page-header {
+        padding: 56px 0 48px;
+        background: var(--color-surface-alt);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .page-header h1 {
+        font-size: 40px;
+        margin-bottom: 12px;
+      }
+      .page-header .lead {
+        max-width: 640px;
+      }
+
+      /* ===========================================
+         8. Cards
+         =========================================== */
+      .card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 32px;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-border-light);
+      }
+      .card h3 {
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: var(--color-text-secondary);
+      }
+      .card-accent {
+        border-top: 3px solid var(--color-accent);
+      }
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 12px;
+        color: var(--color-accent);
+      }
+      .card-link:hover {
+        color: var(--color-accent-dark);
+        text-decoration: none;
+      }
+      .card-link::after {
+        content: '\2192';
+        transition: transform 0.15s ease;
+      }
+      .card-link:hover::after {
+        transform: translateX(3px);
+      }
+
+      /* ===========================================
+         9. Buttons
+         =========================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        font-family: var(--font-sans);
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 6px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+        text-decoration: none;
+        line-height: 1;
+      }
+      .btn:hover { text-decoration: none; }
+      .btn-primary {
+        background: var(--color-accent);
+        color: #fff;
+        border-color: var(--color-accent);
+      }
+      .btn-primary:hover {
+        background: var(--color-accent-dark);
+        border-color: var(--color-accent-dark);
+        color: #fff;
+      }
+      .btn-outline-light {
+        background: transparent;
+        color: var(--color-text-on-dark-bright);
+        border-color: rgba(255,255,255,0.25);
+      }
+      .btn-outline-light:hover {
+        border-color: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+      .btn-secondary:hover {
+        background: var(--color-accent);
+        color: #fff;
+      }
+
+      /* ===========================================
+         10. Feature / Highlight blocks
+         =========================================== */
+      .highlight-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .highlight-row .highlight-text h2 {
+        margin-bottom: 16px;
+      }
+      .highlight-row .highlight-text p {
+        color: var(--color-text-secondary);
+        margin-bottom: 16px;
+      }
+      .highlight-visual {
+        background: var(--color-dark);
+        border-radius: var(--radius);
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .highlight-visual .trace-lines {
+        width: 100%;
+        opacity: 0.6;
+      }
+
+      /* ===========================================
+         11. Stats row
+         =========================================== */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        padding: 48px 0;
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-value {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--color-accent);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-label {
+        font-size: 15px;
+        color: var(--color-text-secondary);
+      }
+
+      /* ===========================================
+         12. CTA Section
+         =========================================== */
+      .cta-section {
+        padding: 72px 0;
+        text-align: center;
+      }
+      .cta-section h2 {
+        margin-bottom: 12px;
+      }
+      .cta-section p {
+        color: var(--color-text-secondary);
+        font-size: 18px;
+        margin-bottom: 28px;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ===========================================
+         13. Contact cards
+         =========================================== */
+      .contact-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 32px;
+      }
+      .contact-card h3 {
+        margin-bottom: 4px;
+      }
+      .contact-role {
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+        margin-bottom: 16px;
+      }
+      .contact-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .contact-detail a {
+        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* ===========================================
+         14. Partner card
+         =========================================== */
+      .partner-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+      }
+      .partner-card h3 {
+        margin-bottom: 8px;
+      }
+      .partner-card h3 a {
+        color: var(--color-text);
+      }
+      .partner-card h3 a:hover {
+        color: var(--color-accent);
+      }
+      .partner-card p {
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        flex: 1;
+      }
+      .partner-card .card-link {
+        margin-top: auto;
+        padding-top: 8px;
+      }
+
+      /* ===========================================
+         15. Footer
+         =========================================== */
+      .site-footer {
+        background: var(--color-dark);
+        color: var(--color-text-on-dark);
+        padding: 64px 0 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 48px;
+        padding-bottom: 48px;
+      }
+      .footer-brand .logo {
+        color: var(--color-text-on-dark-bright);
+        margin-bottom: 16px;
+      }
+      .footer-brand .logo:hover {
+        color: var(--color-text-on-dark-bright);
+      }
+      .footer-brand p {
+        color: var(--color-text-on-dark);
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .footer-location {
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+      }
+      .footer-heading {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--color-text-tertiary);
+        margin-bottom: 16px;
+      }
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-links a {
+        font-size: 15px;
+        color: var(--color-text-on-dark);
+        transition: color 0.15s ease;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        color: var(--color-text-on-dark-bright);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .footer-contact-item a {
+        color: var(--color-text-on-dark);
+        text-decoration: none;
+      }
+      .footer-contact-item a:hover {
+        color: var(--color-text-on-dark-bright);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 24px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        color: var(--color-text-tertiary);
+      }
+      .footer-bottom a {
+        color: var(--color-text-tertiary);
+        text-decoration: none;
+      }
+      .footer-bottom a:hover {
+        color: var(--color-text-on-dark);
+      }
+
+      /* ===========================================
+         16. Utilities
+         =========================================== */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .text-center { text-align: center; }
+      .mb-0 { margin-bottom: 0; }
+      .mt-16 { margin-top: 16px; }
+      .mt-24 { margin-top: 24px; }
+      .mt-32 { margin-top: 32px; }
+      .mt-48 { margin-top: 48px; }
+
+      /* ===========================================
+         17. Responsive
+         =========================================== */
+      @media (max-width: 960px) {
+        .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        .highlight-row { grid-template-columns: 1fr; gap: 32px; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 32px; }
+        h2 { font-size: 26px; }
+        .hero h1 { font-size: 36px; }
+        .hero { padding: 72px 0 64px; }
+        .page-header h1 { font-size: 32px; }
+        .section, .section-alt { padding: 56px 0; }
+        .grid-2 { grid-template-columns: 1fr; }
+        .grid-3 { grid-template-columns: 1fr; }
+        .grid-4 { grid-template-columns: 1fr; }
+        .stats-row { grid-template-columns: 1fr; gap: 24px; }
+        .card { padding: 24px; }
+
+        .nav-toggle {
+          display: flex;
+          flex-direction: column;
+        }
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: var(--header-height);
+          left: 0;
+          right: 0;
+          background: var(--color-surface);
+          border-bottom: 1px solid var(--color-border);
+          flex-direction: column;
+          padding: 12px 24px 20px;
+          box-shadow: var(--shadow-lg);
+          gap: 2px;
+        }
+        .nav-menu.open {
+          display: flex;
+        }
+        .nav-cta {
+          margin-left: 0;
+          margin-top: 8px;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+        .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      }
     </style>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "TraceSeis",
       "url": "https://www.traceseis.com/",
-      "logo": "https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1",
+      "foundingDate": "2003",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
       "sameAs": [
-        "https://www.linkedin.com/company/24986283/",
         "https://www.linkedin.com/company/traceseis-inc"
       ]
     }
     </script>
   </head>
   <body>
-    <header>
-      <div class="wrap nav">
-        <div class="brand">
-          <img alt="TraceSeis logo" src="https://i0.wp.com/www.traceseis.com/wp-content/uploads/2017/04/TRACESEIS-INC-02-e1493737554657.png?fit=300%2C172&ssl=1" />
-          <span>TraceSeis</span>
-        </div>
-        <nav class="links" aria-label="Primary">
-          <a href="/">Home</a>
-          <a href="/services">Services</a>
-          <a href="/software">Software</a>
-          <a href="/partners">Partners</a>
-          <a href="/resources">Resources</a>
-          <a href="/about">About</a>
-          <a class="btn" href="/contact">Contact</a>
+
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo" aria-label="TraceSeis home">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 14 L7 8 L12 16 L17 6 L22 13 L26 10" stroke="#0e7c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 20 L7 14 L12 22 L17 12 L22 19 L26 16" stroke="#0e7c86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+            </svg>
+          </span>
+          <span class="logo-text">TraceSeis</span>
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <nav class="nav-menu" id="nav-menu" aria-label="Main">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class={`nav-link${isActive(link.href) ? ' active' : ''}`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/contact"
+            class={`nav-cta${isActive('/contact') ? ' active' : ''}`}
+          >
+            Contact
+          </a>
         </nav>
       </div>
     </header>
+
     <main>
       <slot />
     </main>
-    <footer class="wrap">
-      <p class="muted">© TraceSeis. Preview site for review only.</p>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="logo" aria-label="TraceSeis home">
+              <span class="logo-mark" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 14 L7 8 L12 16 L17 6 L22 13 L26 10" stroke="#0e7c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 20 L7 14 L12 22 L17 12 L22 19 L26 16" stroke="#0e7c86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+                </svg>
+              </span>
+              <span class="logo-text">TraceSeis</span>
+            </a>
+            <p>Specialized geoscience solutions through services, consulting, and software since 2003.</p>
+            <span class="footer-location">Houston, Texas</span>
+          </div>
+          <div>
+            <p class="footer-heading">Navigation</p>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/software">Software</a></li>
+              <li><a href="/partners">Partners</a></li>
+              <li><a href="/resources">Resources</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-heading">Get in Touch</p>
+            <div class="footer-contact-item">
+              <a href="mailto:achaveste@traceseis.com">achaveste@traceseis.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <a href="tel:+18327076505">+1 (832) 707-6505</a>
+            </div>
+            <div class="footer-contact-item mt-16">
+              <a href="https://www.linkedin.com/company/traceseis-inc" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2003&ndash;{new Date().getFullYear()} TraceSeis, Inc.</span>
+          <a href="https://www.traceseis.com/" target="_blank" rel="noopener">traceseis.com</a>
+        </div>
+      </div>
     </footer>
+
+    <script>
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+          if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('open');
+          }
+        });
+      }
+    </script>
+
   </body>
 </html>

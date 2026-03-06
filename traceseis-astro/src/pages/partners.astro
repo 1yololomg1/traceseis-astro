@@ -1,27 +1,47 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Partners — TraceSeis" description="TraceSeis partners with select industry leaders to deliver geoscience solutions.">
-  <section class="section wrap" id="partners">
-    <h1>Partners</h1>
-    <div class="partners-list">
-      <div class="card">
-        <h3><a href="https://www.geoinsights.com/" target="_blank" rel="noopener">Geophysical Insights</a></h3>
-        <p class="muted">Analytics and machine learning applications for subsurface interpretation.</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://z-terra.com/" target="_blank" rel="noopener">Z‑Terra</a></h3>
-        <p class="muted">Integrated seismic imaging software and processing services.</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://www.nmrpetrophysics.com/" target="_blank" rel="noopener">NMR Petrophysics</a></h3>
-        <p class="muted">Petrophysical and mineralogical evaluations and related services.</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://www.brtenergy.com/" target="_blank" rel="noopener">BRT Energy Advisors</a></h3>
-        <p class="muted">Prospect generation, evaluations, and related services.</p>
-      </div>
+<BaseLayout
+  title="Partners — TraceSeis"
+  description="TraceSeis partners with select industry leaders to deliver integrated geoscience solutions."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">Partners</p>
+      <h1>Industry Partners</h1>
+      <p class="lead">TraceSeis collaborates with select industry leaders to deliver integrated geoscience solutions.</p>
     </div>
-    <p style="margin-top:12px;"><a href="https://www.traceseis.com/partners-page/" target="_blank" rel="noopener">View partners on traceseis.com</a></p>
   </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="partner-card">
+          <h3><a href="https://www.geoinsights.com/" target="_blank" rel="noopener">Geophysical Insights</a></h3>
+          <p>Analytics and machine learning applications for subsurface interpretation.</p>
+          <a href="https://www.geoinsights.com/" target="_blank" rel="noopener" class="card-link">Visit website</a>
+        </div>
+        <div class="partner-card">
+          <h3><a href="https://z-terra.com/" target="_blank" rel="noopener">Z-Terra</a></h3>
+          <p>Integrated seismic imaging software and processing services.</p>
+          <a href="https://z-terra.com/" target="_blank" rel="noopener" class="card-link">Visit website</a>
+        </div>
+        <div class="partner-card">
+          <h3><a href="https://www.nmrpetrophysics.com/" target="_blank" rel="noopener">NMR Petrophysics</a></h3>
+          <p>Petrophysical and mineralogical evaluations and related services.</p>
+          <a href="https://www.nmrpetrophysics.com/" target="_blank" rel="noopener" class="card-link">Visit website</a>
+        </div>
+        <div class="partner-card">
+          <h3><a href="https://www.brtenergy.com/" target="_blank" rel="noopener">BRT Energy Advisors</a></h3>
+          <p>Prospect generation, evaluations, and related services.</p>
+          <a href="https://www.brtenergy.com/" target="_blank" rel="noopener" class="card-link">Visit website</a>
+        </div>
+      </div>
+      <p class="mt-32" style="text-align: center;">
+        <a href="https://www.traceseis.com/partners-page/" target="_blank" rel="noopener" class="card-link">View full partner details on traceseis.com</a>
+      </p>
+    </div>
+  </section>
+
 </BaseLayout>

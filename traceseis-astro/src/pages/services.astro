@@ -1,26 +1,52 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Services — TraceSeis" description="TraceSeis provides services including Seismic Data Processing, Feasibility Studies, Lithofacies Prediction, and Inversion to Reservoir Properties.">
-  <section class="section wrap" id="services">
-    <h1>Services</h1>
-    <div class="grid">
-      <article class="card">
-        <h3>Seismic Data Processing</h3>
-        <p><a href="https://www.traceseis.com/services/" target="_blank" rel="noopener">Learn more on traceseis.com</a></p>
-      </article>
-      <article class="card">
-        <h3>Feasibility Studies</h3>
-        <p><a href="https://www.traceseis.com/services/feasibility-studies/" target="_blank" rel="noopener">Learn more</a></p>
-      </article>
-      <article class="card">
-        <h3>Lithofacies Prediction</h3>
-        <p><a href="https://www.traceseis.com/services-lithofacies-prediction/" target="_blank" rel="noopener">Learn more</a></p>
-      </article>
-      <article class="card">
-        <h3>Inversion to Reservoir Properties</h3>
-        <p><a href="https://www.traceseis.com/services/inversion-to-reservoir-properties/" target="_blank" rel="noopener">Learn more</a></p>
-      </article>
+<BaseLayout
+  title="Services — TraceSeis"
+  description="TraceSeis provides specialized geoscience services including seismic data processing, feasibility studies, lithofacies prediction, and inversion to reservoir properties."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="label-sm" style="color: var(--color-accent); margin-bottom: 8px;">Services</p>
+      <h1>Geoscience Services</h1>
+      <p class="lead">Specialized geophysical and geological analysis to help reduce risk when quantifying reservoir properties.</p>
     </div>
   </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card card-accent">
+          <h3>Seismic Data Processing</h3>
+          <p>Advanced techniques to enhance data quality and resolution with customized workflows tailored to specific geological challenges. TraceSeis applies rigorous processing methodologies to ensure reliable and interpretable seismic data.</p>
+          <a href="https://www.traceseis.com/services/" target="_blank" rel="noopener" class="card-link">Details on traceseis.com</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Feasibility Studies</h3>
+          <p>Thorough assessments evaluating data quality, geological complexity, and technical viability. These studies provide the foundation for informed decision-making before committing to larger-scale projects.</p>
+          <a href="https://www.traceseis.com/services/feasibility-studies/" target="_blank" rel="noopener" class="card-link">Details on traceseis.com</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Lithofacies Prediction</h3>
+          <p>Accurate predictions using integrated seismic and well-log data combined with rock physics modeling. This service helps characterize subsurface lithology and supports reservoir modeling efforts.</p>
+          <a href="https://www.traceseis.com/services-lithofacies-prediction/" target="_blank" rel="noopener" class="card-link">Details on traceseis.com</a>
+        </div>
+        <div class="card card-accent">
+          <h3>Inversion to Reservoir Properties</h3>
+          <p>Proprietary methodologies that transform seismic attributes into porosity, saturation, and other reservoir parameters. TraceSeis's approach reduces dependency on Low Frequency Models, streamlining the characterization workflow.</p>
+          <a href="https://www.traceseis.com/services/inversion-to-reservoir-properties/" target="_blank" rel="noopener" class="card-link">Details on traceseis.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <h2>Need a tailored solution?</h2>
+      <p>Contact TraceSeis to discuss your specific reservoir characterization requirements.</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
 </BaseLayout>
